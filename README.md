@@ -11,7 +11,7 @@ IoTデータ可視化サービス[Ambient](https://ambidata.io/)を利用させ�
 
 ## 部品
 - マイコン ESP32 (1,000～3,000円くらい。WiFiモジュールがついていれば一番安いものでOK)
-- 温度湿度センサー DHT11 Temperature and Humidity Sensor module.  (550円くらい) [秋月電子通商のDHT11のページ](https://akizukidenshi.com/catalog/g/g107003/)
+- 温度湿度センサー DHT11 Temperature and Humidity Sensor module.  (600円くらい) [秋月電子通商のDHT11のページ](https://akizukidenshi.com/catalog/g/g107003/)
 - 抵抗器 electrical resistor 4.7KΩ x 1  (5円くらい) 秋葉原の[マルツ](https://www.marutsu.co.jp/pc/static/shop/akihabara?srsltid=AfmBOooxmcF6RHUCmPnxy95wnrMOSUgJfuMlz02e7loPambjFAETOjdl)さんでバラ売りしています。
 - ブレッドボード Breadboard x 1 (400円くらい)
 - ワイヤリングケーブル 3本 wire cables x 3.
