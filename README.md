@@ -34,3 +34,8 @@ IoTデータ可視化サービス[Ambient](https://ambidata.io/)を利用させ�
 - [Ambient ESP32 ESP8266 lib by Ambient.](https://github.com/AmbientDataInc/Ambient_ESP8266_lib)
 - [DHT sensor library by Adafruit 1.4.7](https://github.com/adafruit/DHT-sensor-library)
 
+## ソースコード
+
+src/main.cをArduino IDEのエディタに貼り付けて、コンパイルします。
+
+ソースコードは[こちらのサイト](https://qiita.com/denden888/items/101bd1ee937f85f355ea)を参考にさせていただきました。ありがとうございます。
