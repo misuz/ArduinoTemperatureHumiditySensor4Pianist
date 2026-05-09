@@ -1,7 +1,8 @@
 # ArduinoTemperatureHumiditySensor4Pianist
 Temperature and Humidity Sensor for Piano conditioning by ESP32 Arduino and DHT11 sensor module.
 
-ピアノの温度・湿度をインターネットを経由して監視するためにESP32マイコンボードとAmbientを利用して開発しました。
+ピアノの温度・湿度をスマホから確認できたらいいなあ....  
+ということでインターネット経由で監視できるシステムをESP32マイコンボードとAmbient IoTデータ可視化サービス（無料）を利用して開発しました。
 
 ## 表示例
 IoTデータ可視化サービス[Ambient](https://ambidata.io/)を利用させていただいております。ありがとうございます。
