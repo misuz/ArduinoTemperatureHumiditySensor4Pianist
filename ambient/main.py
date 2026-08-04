@@ -4,6 +4,7 @@ from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 import sqlite3
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 app = FastAPI()
 
@@ -59,7 +60,7 @@ async def receive_ambient_data(channel_id: str, request: Request):
             raise HTTPException(status_code=403, detail="Invalid writeKey")
 
     # データ保存
-    created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    created_at = datetime.now(ZoneInfo("Asia/Tokyo")).strftime("%Y-%m-%d %H:%M:%S")
     c.execute('''
         INSERT INTO sensor_data (channel_id, created_at, d1, d2, d3, d4, d5, d6, d7, d8)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
