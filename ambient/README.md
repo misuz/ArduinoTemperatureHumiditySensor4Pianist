@@ -12,7 +12,17 @@ OCI(Oracle Cloud Infrastructure)の永久無料サーバで構築できます。
 
 このとき、注意点としては、OCIのUbuntu24.04サーバは、デフォルトでiptablesが動作しており、ssh(TCP/22)以外は全ポートクローズの設定になっています。  
 そのため、iptablesでポートTCP/8080の解放の設定が必要です。  
+```shell
+# TCP/8080へ外部からの接続を許可
+sudo iptables -I INPUT 1 -p tcp --dport 8080 -j ACCEPT
+
+# 現在の iptables ルールを保存
+sudo apt-get install -y iptables-persistent
+sudo netfilter-persistent save
+```
+
 その後に、OCIのVNICのセキュリティ設定で、ポートTCP/8080を開放する設定も必要です。  
+
 
 ### Python3とsqlite3をインストール
 
