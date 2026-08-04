@@ -1,0 +1,22 @@
+# /etc/systemd/system/ambient.service
+[Unit]
+Description=Ambient Compatible IoT Server
+After=network.target
+
+[Service]
+# 実行ユーザー (環境に合わせて ubuntu を指定)
+User=ubuntu
+Group=ubuntu
+
+# 作業ディレクトリ
+WorkingDirectory=/home/ubuntu/ambient-compat
+
+# 仮想環境(venv)内の uvicorn を指定して実行
+ExecStart=/home/ubuntu/ambient-compat/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8080
+
+# 落ちた場合に自動再起動
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
