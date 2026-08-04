@@ -4,6 +4,8 @@ ambient.ioに依存しているのはあとあと困りそうでしたので、�
 
 OCI(Oracle Cloud Infrastructure)の永久無料サーバで構築できます。
 
+![](ambient-compat.png)
+
 ## 簡単な手順
 
 ### OCIにUbuntu24.04.LTSサーバを立てます。
@@ -12,23 +14,47 @@ OCI(Oracle Cloud Infrastructure)の永久無料サーバで構築できます。
 そのため、iptablesでポートTCP/8080の解放の設定が必要です。  
 その後に、OCIのVNICのセキュリティ設定で、ポートTCP/8080を開放する設定も必要です。  
 
-
 ### Python3とsqlite3をインストール
 
-`main.py`を適当なディレクトリに置きます。
+```shell
+sudo apt update
+sudo apt install -y python3-pip python3-venv
+
+mkdir ~/ambient-compat && cd ~/ambient-compat
+python3 -m venv venv
+source venv/bin/activate
+pip install fastapi uvicorn sqlite3
+
+```
+
+`main.py`を上記で作成した`~/ambient-compat/`ディレクトリに置きます。
+
+### 起動スクリプトの作成と登録
 
 `ambient.service` を `/etc/systemd/system/ambient.service`において  
 ```shell
-systemctl enable ambient.service
+sudo systemctl daemon-reload
+sudo systemctl enable ambient.service
 ```
 とすると起動スクリプトが登録されます。
 
 ```shell
-sudo systemctl start ambient.service
+sudo systemctl start ambient.service    # 起動
+sudo systemctl status ambient.service   # 動作確認
 ```
 
 でポート8080でWebサーバが起動します。
 
-Arduino IDEでlibraryフォルダを探し、Ambient.cを開き、サーバのアドレス(ambient.io)を上記のIPアドレスに置換します。ポートを80から8080に変更します。
-Arduino IDEで再コンパイルをすれば、自動的にlibraryのソースコードも再コンパイルされます。
+確認(OCIのUbuntuサーバ上で)
+```shell
+curl http://localhost:8080/
+```
+
+これで動作していれば、手元のPCのブラウザで以下のようにしてAmbient互換サーバが起動します。  
+http://your.ip.address:8080/
+
+### ESP32 (Arduino IDE) 側の修正
+
+Arduino IDEでlibraryフォルダを探し、Ambient.cを開き、サーバのアドレス(ambient.io)を上記のIPアドレスに置換します。ポートを80から8080に変更します。  
+Arduino IDEで再コンパイルをすれば、自動的にlibraryのソースコードも再コンパイルされます。  
 
