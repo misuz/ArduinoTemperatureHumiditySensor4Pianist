@@ -4,6 +4,11 @@ Temperature and Humidity Sensor for Piano conditioning by ESP32 and DHT11 sensor
 ピアノの温度・湿度をスマホから確認できたらいいなあ....  
 ということでインターネット経由で監視できるシステムをESP32マイコンボードとAmbient IoTデータ可視化サービス（無料）を利用して開発しました。
 
+## Ambient互換の自前サーバを作りました
+ambient.ioが調子悪いので、依存しないでできるよう、自前のサーバを無料クラウドインスタンス上に構築しました。
+詳しくは[こちら](./ambient)をご覧ください。
+
+
 ## 表示例
 IoTデータ可視化サービス[Ambient](https://ambidata.io/)を利用させていただいております。ありがとうございます。
 ![](chart.png)
