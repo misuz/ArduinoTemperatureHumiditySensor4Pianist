@@ -39,6 +39,9 @@ pip install fastapi uvicorn sqlite3
 
 `main.py`を上記で作成した`~/ambient-compat/`ディレクトリに置きます。
 
+`main.py`の中に、`channel_id`と`write_key`がハードコーディングされているので、あなたの環境に合わせて書き換えてください。
+
+
 ### 起動スクリプトの作成と登録
 
 `ambient.service` を `/etc/systemd/system/ambient.service`において  
