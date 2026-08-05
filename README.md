@@ -6,7 +6,7 @@ Temperature and Humidity Sensor for Piano conditioning by ESP32 and DHT11 sensor
 
 ## Ambient互換の自前サーバを作りました
 ambient.ioが調子悪いので、依存しないでできるよう、自前のサーバを無料クラウドインスタンス上に構築しました。
-詳しくは[こちら](./ambient)をご覧ください。
+詳しくは[こちら](./ambient/README.md)をご覧ください。
 
 
 ## 表示例
