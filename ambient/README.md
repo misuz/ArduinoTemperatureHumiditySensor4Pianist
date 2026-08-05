@@ -39,7 +39,7 @@ pip install fastapi uvicorn sqlite3
 
 `main.py`を上記で作成した`~/ambient-compat/`ディレクトリに置きます。
 
-`main.py`の中に、`channel_id`と`write_key`がハードコーディングされているので、あなたの環境に合わせて書き換えてください。
+`main.py`の中に、`channel_id`がハードコーディングされているので、あなたの環境に合わせて書き換えてください。
 
 
 ### 起動スクリプトの作成と登録
@@ -65,6 +65,22 @@ curl http://localhost:8080/
 
 これで動作していれば、手元のPCのブラウザで以下のようにしてAmbient互換サーバが起動します。  
 http://your.ip.address:8080/
+
+### データベースにchannel_idとwrite_keyのペアを登録
+
+一度、main.pyを起動すると、ホームディレクトリ(~/ambient-compat/)に`ambient.db`というファイルができています。これがデータベースファイルです。
+ここにあなたの`channel_id`と`write_key`を書き込み、ESP32（Arduino）ボードからのアクセス許可を与えます。
+
+```shell
+sqlite3 ~/ambient-compat/ambient.db "INSERT INTO channels (channel_id, write_key) VALUES ('your.channel_id', 'your.write_key');"
+```
+
+確認
+```shell
+sqlite3 ~/ambient-compat/ambient.db "SELECT * FROM channels;"
+```
+書き込んだ`channel_id`と`write_key`が表示されればOKです。
+
 
 ### ESP32 (Arduino IDE) 側の修正
 
