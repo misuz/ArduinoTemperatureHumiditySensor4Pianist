@@ -2,17 +2,9 @@
 Temperature and Humidity Sensor for Piano conditioning by ESP32 and DHT11 sensor module.
 
 ピアノの温度・湿度をスマホから確認できたらいいなあ....  
-ということでインターネット経由で監視できるシステムをESP32マイコンボードとAmbient IoTデータ可視化サービス（無料）を利用して開発しました。
+ということでインターネット経由で監視できるシステムをESP32マイコンボードと無料サーバを利用して開発しました。
 
-## Ambient互換の自前サーバを作りました
-ambient.ioが調子悪いので、依存しないでできるよう、自前のサーバを無料クラウドインスタンス上に構築しました。
-詳しくは[こちら](./ambient/README.md)をご覧ください。
-
-
-## 表示例
-IoTデータ可視化サービス[Ambient](https://ambidata.io/)を利用させていただいております。ありがとうございます。
-![](chart.png)
-
+---
 
 ## 部品
 - マイコン ESP32 (1,000～3,000円くらい。WiFiモジュールがついていれば一番安いものでOK)
@@ -45,6 +37,7 @@ IoTデータ可視化サービス[Ambient](https://ambidata.io/)を利用させ�
 ブレッドボードが小さすぎてセンサーが傾いてしまったのでもう少し大きいボードのほうがよいです。
 ![完成図](ESP32-DHT11-1.jpg)
 
+---
 
 ## 開発環境
 
@@ -56,18 +49,17 @@ IoTデータ可視化サービス[Ambient](https://ambidata.io/)を利用させ�
 - [Ambient ESP32 ESP8266 lib by Ambient.](https://github.com/AmbientDataInc/Ambient_ESP8266_lib)
 - [DHT sensor library by Adafruit 1.4.7](https://github.com/adafruit/DHT-sensor-library)
 
-## Ambient IoT可視化サイトへの登録（無料）
+---
+## Ambient互換サーバの設定
 
-- IoTデータ可視化サービス[Ambient](https://ambidata.io/)に会員登録し、チャンネルを一つ新規に作成します。
-- チャンネルID,チャンネルキーをメモしておきます。（あとでソースコードに埋め込みます）
-- グラフを設定し、データ1を温度、データ2を湿度に設定します。  
-  ![グラフの設定](chart_setting.png)
-  
+詳しくは[こちら](./ambient/README.md)をご覧ください。
+
+---
 ## ソースコードとコンパイル
 
 - 本リポジトリにある[main.c](src/main.c)をArduino IDEのエディタに貼り付けて、以下の値をあなたの環境に合わせて書き換えた後、コンパイルボタンでコンパイルします。
   - WiFiのSSIDとパスワード(2.4GHzしか使えません)
-  - Ambientに登録（無料）して管理画面で設定した、チャンネルIDとチャンネルキー
+  - Ambient互換サーバに登録して管理画面で設定した、チャンネルIDとチャンネルキー
 - ESP32ボードに書き込むときは、ESP32ボードのBOOTボタンを押したままArduino IDEの書き込みボタンを押して書き込み完了したらボタンを離します。
 - 書き込み成功したらESP32ボードのRESETボタンを押すとプログラムがスタートします。
 - Arduino IDEのメニューからツール＞シリアルモニタを開くと動作状況が確認できます。無事にWiFiに接続され、データが取得できると温度、湿度が1分おきにシリアルモニタに表示されます。
